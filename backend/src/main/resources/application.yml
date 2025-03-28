@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-cvidu515pdvs7381ke3g-a.render.com:5432/portfolio_db_88um
+    username: portfolio_user
+    password: kVlc7c7HU7dFpk5RzGRZTQwVz8UC3P0l
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # ?? ?? update, ?? ? validate or none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
