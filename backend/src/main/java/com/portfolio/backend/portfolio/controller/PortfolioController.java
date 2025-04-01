@@ -1,6 +1,6 @@
-package com.portfolio.backend.controller;
+package com.portfolio.backend.portfolio.controller;
 
-import com.portfolio.backend.vo.ResultVo;
+import com.portfolio.backend.common.vo.ResultVo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

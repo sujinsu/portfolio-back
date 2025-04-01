@@ -1,4 +1,4 @@
-package com.portfolio.backend.vo;
+package com.portfolio.backend.common.vo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
