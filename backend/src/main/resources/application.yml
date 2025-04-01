@@ -4,6 +4,8 @@ spring:
     username: portfolio_user
     password: kVlc7c7HU7dFpk5RzGRZTQwVz8UC3P0l
     driver-class-name: org.postgresql.Driver
+server:
+  port: 8080
 
   jpa:
     hibernate:
