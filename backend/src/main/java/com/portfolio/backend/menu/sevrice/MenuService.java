@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -15,15 +16,17 @@ public class MenuService {
 
     private final MenuRepository menuRepository;
 
-    public List<Menu> getAllMenus() {
-        return menuRepository.findAllByOrderBySortOrderAsc();
+    public List<MenuVo> getAllMenus() {
+        return menuRepository.findAllByOrderBySortOrderAsc().stream()
+                .map(MenuVo::fromEntity)
+                .collect(Collectors.toList());
     }
 
-    public Menu getMenu(Integer id) {
-        return menuRepository.findById(id)
+    public MenuVo getMenu(Integer id) {
+        Menu menu = menuRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("메뉴 없음"));
+        return MenuVo.fromEntity(menu);
     }
-
     public MenuVo createMenu(MenuCreateModifyDto dto) {
         Menu menu = new Menu();
         menu.setParentId(dto.getParentId());
@@ -38,7 +41,8 @@ public class MenuService {
     }
 
     public MenuVo updateMenu(Integer id, MenuCreateModifyDto dto) {
-        Menu menu = getMenu(id);
+        Menu menu = menuRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("메뉴 없음"));
 
         menu.setParentId(dto.getParentId());
         menu.setLevel(dto.getLevel());
@@ -51,7 +55,7 @@ public class MenuService {
         return MenuVo.fromEntity(menuRepository.save(menu));
     }
 
-    public void deleteMenu(Long id) {
+    public void deleteMenu(Integer id) {
         menuRepository.deleteById(id);
     }
 }

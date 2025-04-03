@@ -4,9 +4,6 @@ spring:
     username: portfolio_user
     password: kVlc7c7HU7dFpk5RzGRZTQwVz8UC3P0l
     driver-class-name: org.postgresql.Driver
-server:
-  port: 8080
-
   jpa:
     hibernate:
       ddl-auto: update  # 개발 중일 경우 'update' or 'create', 운영은 'none' 추천
@@ -14,3 +11,9 @@ server:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+server:
+  port: 8080
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
